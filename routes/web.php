@@ -14,3 +14,12 @@ Route::get('/about', function(){
 Route::get('/contact', function(){
     return view('contact');
 });
+Route::get('/user', function(){
+    return view('User')->with('name', 'Radhe radhe')->with('age',22);
+});
+Route::get('/setcookie',function(){
+    return response("Cookie Set")->cookie('name','Ali');
+});
+Route::get('/getcookie',function(){
+    return response("Cookie get")->cookie('name','Ali');
+});
