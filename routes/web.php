@@ -1,25 +1,48 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', function(){
+// Home route using controller
+Route::get('/', [HomeController::class, 'index']);
+
+// Simple pages
+Route::get('/home', function () {
     return view('home');
+})->name('home');
+
+Route::get('/about', function () {
+    return view('about');
 });
-Route::get('/about', function(){
-    return view('About');
-});
-Route::get('/contact', function(){
+
+Route::get('/contact', function () {
     return view('contact');
 });
-Route::get('/user', function(){
-    return view('User')->with('name', 'Radhe radhe')->with('age',22);
+
+// Passing data to view
+Route::get('/user', function () {
+    return view('user')->with('name', 'Radhe radhe')->with('age', 22);
 });
-Route::get('/setcookie',function(){
-    return response("Cookie Set")->cookie('name','Ali');
+
+// Cookie routes
+Route::get('/setcookie', function () {
+    return response("Cookie Set")->cookie('name', 'Ali');
 });
-Route::get('/getcookie',function(){
-    return response("Cookie get")->cookie('name','Ali');
+
+Route::get('/getcookie', function () {
+    return request()->cookie('name');
 });
+
+
+
+Route::get('/first',function(){
+    return redirect('/second');
+});
+
+Route::get('/second',function(){
+    return"You are on second page";
+});
+
+use App\Http\Controllers\productController;
+Route::get("admin/product",[productController::class,'index']);
+Route::get("admin/about",[productController::class,'store']);
