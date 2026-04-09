@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    //
+    function store(){
+        return  redirect('/about');
+    }
 }

@@ -46,3 +46,20 @@ Route::get('/second',function(){
 use App\Http\Controllers\productController;
 Route::get("admin/product",[productController::class,'index']);
 Route::get("admin/about",[productController::class,'store']);
+
+use App\Http\Controllers\AboutController;
+Route::get('lpu/about', [AboutController::class, 'store']);
+
+
+
+
+use App\Http\Controllers\product;
+Route::resource('products', product::class);
+
+
+
+//checkuserrole middleware
+use App\Http\Middleware\CheckUserRole;
+Route::get('/admin', function () {
+    return "Welcome to dashboard";
+})->middleware(CheckUserRole::class);    
