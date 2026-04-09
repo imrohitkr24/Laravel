@@ -62,4 +62,10 @@ Route::resource('products', product::class);
 use App\Http\Middleware\CheckUserRole;
 Route::get('/admin', function () {
     return "Welcome to dashboard";
-})->middleware(CheckUserRole::class);    
+})->middleware(CheckUserRole::class);    use 
+
+//student controller
+
+App\Http\Controllers\StudentController;
+
+Route::get('/student/{id}', [StudentController::class, 'show']);
