@@ -6,20 +6,14 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function show($id)
+    public function index()
     {
-        // Student data (stored in array)
         $students = [
-            1 => ["name" => "Raman", "course" => "BCA", "city" => "Delhi"],
-            2 => ["name" => "Amit", "course" => "MCA", "city" => "Mumbai"],
-            3 => ["name" => "Neha", "course" => "B.Tech", "city" => "Chandigarh"]
+            ["name" => "Radhe", "marks" => 85],
+            ["name" => "Sham", "marks" => 50],
+            ["name" => "Raman", "marks" => 40]
         ];
 
-        // Check if ID exists
-        if (array_key_exists($id, $students)) {
-            return view('student', ['student' => $students[$id]]);
-        } else {
-            return "Student not found";
-        }
+        return view('students', compact('students'));
     }
 }

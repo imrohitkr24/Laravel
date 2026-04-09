@@ -69,3 +69,5 @@ Route::get('/admin', function () {
 App\Http\Controllers\StudentController;
 
 Route::get('/student/{id}', [StudentController::class, 'show']);
+
+Route::get('/students', [StudentController::class, 'index']);
