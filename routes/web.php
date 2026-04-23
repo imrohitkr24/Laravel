@@ -71,3 +71,24 @@ App\Http\Controllers\StudentController;
 
 
 Route::get('/students', [StudentController::class, 'index']);
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
+
+Route::get('/send', function () {
+    Mail::to('test@gmail.com')->send(new WelcomeMail());
+    return "Email sent successfully!";
+});
+//session
+Route::get('/set-session', function () {
+    session(['name' => 'Rohit Kumar']);
+    return "Session set";
+});
+//upload file
+Route::get('/uploadfile', function () {
+    return view('uploadefile');
+}); 
+Route::post('/uploadfile', function (Request $request) {
+    $request->file('file')->store('uploads');
+    return "File uploaded successfully!";
+});
