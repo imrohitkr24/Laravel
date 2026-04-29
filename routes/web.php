@@ -92,3 +92,4 @@ Route::post('/uploadfile', function (Request $request) {
     $request->file('file')->store('uploads');
     return "File uploaded successfully!";
 });
+
